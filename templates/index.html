@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Status Code Anzeige</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 30px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 18px;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .results-box {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 8px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+        }
+
+        /* Farben je nach Statuscode */
+        li.success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        li.fail {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <h1>HTTP Status Codes</h1>
+
+    <form method="POST">
+        <button type="submit">Requests ausführen</button>
+    </form>
+
+    {% if results %}
+        <div class="results-box">
+            <h2>Ergebnisse:</h2>
+            <ul>
+            {% for r in results %}
+                {% set code = r.split('->')[1].strip() %}
+                <li class="{% if code.startswith('2') %}success{% else %}fail{% endif %}">{{ r }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+</body>
+</html>
