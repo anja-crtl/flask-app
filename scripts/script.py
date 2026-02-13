@@ -2,7 +2,6 @@ import requests
 import threading
 
 def d_d_d(url, results, index):
-    "Führt einen Request aus und speichert den Statuscode in results"
     try:
         response = requests.get(url)
         results[index] = f"{url} -> {response.status_code}"
