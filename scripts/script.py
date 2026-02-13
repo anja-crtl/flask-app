@@ -10,7 +10,7 @@ def d_d_d(url, results, index):
 
 def main():
     url = "https://www.wilhelm-fredemann-obs.de/"
-    num_threads = 9
+    num_threads = 1000
     threads = []
     results = [None] * num_threads
 
