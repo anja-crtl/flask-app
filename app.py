@@ -3,4 +3,5 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "Hallo! Die App läuft!"
+    return "läuft!"
+
